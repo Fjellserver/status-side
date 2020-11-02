@@ -30,12 +30,12 @@ class Kernel extends ConsoleKernel
             foreach ($data as $data ) {
             if(checkOnline($data->ip)) {
             \DB::table('status')->insert(
-                ['host' => $data->name, 'up_down' => 'up']
+                ['host' => $data->name, 'up_down' => 'online']
             );
             }
             else {
                 \DB::table('status')->insert(
-                    ['host' => $data->name, 'up_down' => 'down']
+                    ['host' => $data->name, 'up_down' => 'offline']
                 );
             }
         }
