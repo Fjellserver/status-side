@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/status', 'App\Http\Controllers\StatusController@show', function () {
+Route::get('/', 'App\Http\Controllers\StatusController@show', function () {
     return view('status');
 });

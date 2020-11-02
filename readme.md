@@ -1,4 +1,9 @@
-#Cron jobb for å teste om en server er oppe eller nede
+# Status siden til fjellserver skrevet med PhP og Laravel
+## Cron jobb for å teste om en server er oppe eller nede
+```bash
 * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
-#For å starte den lokalt
+```
+## For å starte den lokalt
+```
 php artisan schedule:work
+```
