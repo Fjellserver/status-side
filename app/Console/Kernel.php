@@ -25,10 +25,38 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function () {
+            $data = \DB::table('hosts')->get();
+
+            foreach ($data as $data ) {
+            if(checkOnline($data->ip)) {
             \DB::table('status')->insert(
-                ['host' => 'test.test', 'up_down' => 'down']
+                ['host' => $data->name, 'up_down' => 'up']
             );
+            }
+            else {
+                \DB::table('status')->insert(
+                    ['host' => $data->name, 'up_down' => 'down']
+                );
+            }
+        }
         })->everyMinute();
+    
+        function checkOnline($domain) {
+            $curlInit = curl_init($domain);
+            curl_setopt($curlInit,CURLOPT_CONNECTTIMEOUT,10);
+            curl_setopt($curlInit,CURLOPT_HEADER,true);
+            curl_setopt($curlInit,CURLOPT_NOBODY,true);
+            curl_setopt($curlInit,CURLOPT_RETURNTRANSFER,true);
+         
+            //get answer
+            $response = curl_exec($curlInit);
+         
+            curl_close($curlInit);
+            if ($response) return true;
+            return false;
+         }
+    
+    
     }
 
     /**
