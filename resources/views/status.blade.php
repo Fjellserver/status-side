@@ -22,25 +22,27 @@
 </section>
 
   <br>
+  
   <div class="container">
   @foreach($status as $key => $data)
     @if($data->up_down == 'online')
     <div class="alert alert-success" role="alert">
       <div class="row">
-        <div class="col-md-6">{{$data->host}}</div>
-        <div class="col-md-6 text-right">{{$data->up_down}}</div>
+        <div class="col-6">{{$data->host}}</div>
+        <div class="col-6 text-right">{{$data->up_down}}</div>
       </div>
     </div>
     @endif
     @if($data->up_down == 'offline')
     <div class="alert alert-danger" role="alert">
       <div class="row">
-          <div class="col-md-6">{{$data->host}}</div>
-          <div class="col-md-6 text-right">{{$data->up_down}}</div>
+          <div class="col-6">{{$data->host}}</div>
+          <div class="col-6 text-right">{{$data->up_down}}</div>
         </div>
     </div>
     @endif
   @endforeach
+  </div>
 
   <div class="container mt-5 mb-5">
 	<div class="row">
