@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{{url('/css/app.css')}}">
+    <link rel="stylesheet" href="{{url('/css/style.css')}}">
 </head>
 <body>
 
@@ -22,7 +22,7 @@
 </section>
 
   <br>
-  
+
   <div class="container">
   @foreach($status as $key => $data)
     @if($data->up_down == 'online')
@@ -51,17 +51,17 @@
 			<ul class="timeline">
 				<li>
         <a href="#">FEIL!</a>
-					<a href="#" class="float-right">1 April, 2020</a>
+					<a class="float-right">1 April, 2020</a>
 					<p>bæbæbæbæ</p>
 				</li>
 				<li>
         <a href="#">FEIL!</a>
-					<a href="#" class="float-right">1 April, 2020</a>
+					<a class="float-right">1 April, 2020</a>
 					<p>daada dfdaffa f af af  fa fa fa </p>
 				</li>
 				<li>
 					<a href="#">FEIL!</a>
-					<a href="#" class="float-right">1 April, 2020</a>
+					<a class="float-right">1 April, 2020</a>
 					<p>fa ffa a fa f af ewe ax</p>
 				</li>
 			</ul>
