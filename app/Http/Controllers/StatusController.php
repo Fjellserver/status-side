@@ -9,8 +9,9 @@ class StatusController extends Controller
     public function show() {
 
     $status = \DB::table('status')->latest('last_checked')->take(4)->get();
+    $info = \DB::table('info')->latest('DateCreated')->take(4)->get();
 
-    //dd($status);
-        return view('status', ['status' => $status]);
+    //dd($info);
+        return view('status', ['status' => $status], ['info' => $info]);
     }
 }

@@ -6,7 +6,7 @@
     <title>Fjellserver.no | Dashboard</title>
 </head>
 <body>
-    <form action="{{url('UserController')}}" method="post" >
+    <form action="{{url('dashboard')}}" method="post" >
     @csrf
         <label for="navn">Navn:</label>
         <input type="text" id="navn" name="navn">

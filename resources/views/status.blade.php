@@ -49,21 +49,13 @@
 		<div class="col-md-6 offset-md-3">
 			<h4>Siste hendelser</h4>
 			<ul class="timeline">
+      @foreach($info as $key => $data)
 				<li>
-        <a href="#">FEIL!</a>
-					<a class="float-right">1 April, 2020</a>
-					<p>bæbæbæbæ</p>
+        <a href="#">{{$data->navn}}</a>
+					<a class="float-right">{{$data->DateCreated}}</a>
+					<p>{{$data->beskrivelse}}</p>
 				</li>
-				<li>
-        <a href="#">FEIL!</a>
-					<a class="float-right">1 April, 2020</a>
-					<p>daada dfdaffa f af af  fa fa fa </p>
-				</li>
-				<li>
-					<a href="#">FEIL!</a>
-					<a class="float-right">1 April, 2020</a>
-					<p>fa ffa a fa f af ewe ax</p>
-				</li>
+      @endforeach
 			</ul>
 		</div>
 	</div>
