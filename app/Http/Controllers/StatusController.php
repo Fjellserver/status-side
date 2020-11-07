@@ -11,7 +11,7 @@ class StatusController extends Controller
     $status = \DB::table('status')->latest('last_checked')->take(4)->get();
     $info = \DB::table('info')->latest('DateCreated')->take(4)->get();
 
-    //dd($info);
+    //dd($status);
         return view('status', ['status' => $status], ['info' => $info]);
     }
 }

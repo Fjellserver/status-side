@@ -15,7 +15,7 @@ class UserController extends Controller
         );
 
 // Replace the URL with your own webhook url
-$url = "https://discordapp.com/api/webhooks/774603505171693608/TYhbJzLS3gAWdUlRpTBPbtvudes_yya1uu6Dww2A-O-tLXJhBftNJPCHUQ3laEykxr2c";
+$url = $_ENV['DISCORD_WEBHOOK'];
 
 $current_date_time = Carbon::now()->toDateTimeString();
 $hookObject = json_encode([

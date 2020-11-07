@@ -27,17 +27,25 @@
   @foreach($status as $key => $data)
     @if($data->up_down == 'online')
     <div class="alert alert-success" role="alert">
-      <div class="row">
-        <div class="col-6">{{$data->host}}</div>
-        <div class="col-6 text-right">{{$data->up_down}}</div>
+      <div class="d-flex justify-content-between">
+        <div>
+          <div class="col-6">{{$data->host}}</div>
+        </div>
+        <div>
+          <div class="circle pulse green"></div>
+        </div>
       </div>
     </div>
     @endif
     @if($data->up_down == 'offline')
     <div class="alert alert-danger" role="alert">
-      <div class="row">
-          <div class="col-6">{{$data->host}}</div>
-          <div class="col-6 text-right">{{$data->up_down}}</div>
+      <div class="d-flex justify-content-between">
+          <div>
+            <div class="col-6">{{$data->host}}</div>
+          </div>
+          <div>
+            <div class="circle pulse red"></div>
+          </div>
         </div>
     </div>
     @endif
