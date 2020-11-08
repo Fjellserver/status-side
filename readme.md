@@ -7,3 +7,9 @@
 ```
 php artisan schedule:work
 ```
+
+## Installer
+```
+composer install --optimize-autoloader --no-dev
+php artisan key:generate
+```
