@@ -18,6 +18,21 @@ class UserController extends Controller
 $url = $_ENV['DISCORD_WEBHOOK'];
 
 $current_date_time = Carbon::now()->toDateTimeString();
+
+// Color frome category
+if ($request->category == "✅") {
+    $coolor = "00FF00";
+}
+if ($request->category == "❌") {
+    $coolor = "FF0000";
+}
+if ($request->category == "⚠️") {
+    $coolor = "ffff00";
+}
+if ($request->category == "🛠️") {
+    $coolor = "808080";
+}
+
 $hookObject = json_encode([
     /*
      * The username shown in the message
@@ -40,7 +55,7 @@ $hookObject = json_encode([
          */
         [
             // Set the title for your embed
-            "title" => "$request->name",
+            "title" => "$request->category $request->name",
 
             // The type of your embed, will ALWAYS be "rich"
             "type" => "rich",
@@ -54,7 +69,7 @@ $hookObject = json_encode([
             "timestamp" => "$current_date_time",
 
             // The integer color to be used on the left side of the embed
-            "color" => hexdec( "00FF00" ),
+            "color" => hexdec( "$coolor" ),
         ]
     ]
 

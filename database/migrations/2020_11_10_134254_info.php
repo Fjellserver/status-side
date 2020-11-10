@@ -17,6 +17,7 @@ class Info extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
+            $table->string('category');
             $table->timestamp('created_at')->useCurrent();
         });
     }
