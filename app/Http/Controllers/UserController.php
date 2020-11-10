@@ -11,7 +11,7 @@ class UserController extends Controller
     {
        // dd($request->all());
         \DB::table('info')->insert(
-            ['navn' => $request->navn, 'beskrivelse' => $request->beskrivelse]
+            ['name' => $request->name, 'description' => $request->description]
         );
 
 // Replace the URL with your own webhook url
@@ -40,13 +40,13 @@ $hookObject = json_encode([
          */
         [
             // Set the title for your embed
-            "title" => "$request->navn",
+            "title" => "$request->name",
 
             // The type of your embed, will ALWAYS be "rich"
             "type" => "rich",
 
             // A description for your embed
-            "description" => "$request->beskrivelse",
+            "description" => "$request->description",
 
             /* A timestamp to be displayed below the embed, IE for when an an article was posted
              * This must be formatted as ISO8601

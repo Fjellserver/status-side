@@ -61,9 +61,9 @@
 			<ul class="timeline">
       @foreach($info as $key => $data)
 				<li>
-        <a href="#">{{$data->navn}}</a>
-					<a class="float-right">{{$data->DateCreated}}</a>
-					<p>{{$data->beskrivelse}}</p>
+        <a href="#">{{$data->name}}</a>
+					<a class="float-right">{{$data->created_at}}</a>
+					<p>{{$data->description}}</p>
 				</li>
       @endforeach
 			</ul>

@@ -5,7 +5,7 @@
 ```
 ## For å starte den lokalt
 ```
-php artisan schedule:work
+php artisan schedule:run
 ```
 
 ## Installer

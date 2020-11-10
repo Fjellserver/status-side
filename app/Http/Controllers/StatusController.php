@@ -8,7 +8,7 @@ class StatusController extends Controller
 {
     public function show() {
 
-    $status = \DB::table('status')->latest('last_checked')->take(4)->get();
+    $status = \DB::table('status')->latest('last_checked')->take(6)->get();
     $info = \DB::table('info')->latest('DateCreated')->take(4)->get();
 
     //dd($status);

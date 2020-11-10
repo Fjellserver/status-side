@@ -9,10 +9,10 @@
     <form action="{{url('dashboard')}}" method="post" >
     @csrf
         <label for="navn">Navn:</label>
-        <input type="text" id="navn" name="navn">
+        <input type="text" id="name" name="navn">
         <br>
         <label for="beskrivelse">Beskrivelse:</label>
-        <input type="text" id="beskrivelse" name="beskrivelse">
+        <input type="text" id="description" name="beskrivelse">
         <input type="submit">
     </form>
 </body>
