@@ -50,6 +50,22 @@
 </form>
 </div>
 
+<div class="container">
+  <h1>Legg til tjeneste:</h1>
+  <form action="{{url('dashboard')}}" method="post" >
+    @csrf
+  <div class="form-group">
+    <label for="tittel">Tjeneste navn:</label>
+    <input type="text" class="form-control" id="host" name="host" placeholder="Skriv navnet til tjenesten">
+  </div>
+  <div class="form-group">
+    <label for="beskrivelse">Tjeneste adresse:</label>
+    <input type="text" class="form-control" id="ip" name="ip" placeholder="Skriv adressen til tjenesten">
+  </div>
+  <button type="submit" class="btn btn-primary">Legg til</button>
+</form>
+</div>
+
   </div>
 </body>
 </html>

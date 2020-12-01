@@ -17,10 +17,12 @@ Route::get('/', 'App\Http\Controllers\StatusController@show', function () {
     return view('status');
 });
 
-Route::post('dashboard', 'App\Http\Controllers\UserController@formSubmit', function () {
- 
-});
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::post('dashboard', 'App\Http\Controllers\UserController@formSubmit', function () {
+});
+
+Route::post('dashboard', 'App\Http\Controllers\updater@formSubmit', function () {
+});
