@@ -37,6 +37,7 @@ class Kernel extends ConsoleKernel
                 \DB::table('status')->insert(
                     ['host' => $data->name, 'up_down' => 'offline']
                 );
+                offline($data->name);
             }
         }
         })->everyMinute();
@@ -55,6 +56,69 @@ class Kernel extends ConsoleKernel
             if ($response) return true;
             return false;
          }
+
+        function offline($n) {
+            // Replace the URL with your own webhook url
+            $url = $_ENV['DISCORD_WEBHOOK_DOWN_ALERT'];
+
+           // $current_date_time = Carbon::now()->toDateTimeString();
+
+            $hookObject = json_encode([
+                /*
+                * The username shown in the message
+                */
+                "username" => "Fjellserver.no | Driftsmeldinger",
+                /*
+                * Whether or not to read the message in Text-to-speech
+                */
+                "tts" => false,
+                /*
+                * File contents to send to upload a file
+                */
+                // "file" => "",
+                /*
+                * An array of Embeds
+                */
+                "embeds" => [
+                    /*
+                    * Our first embed
+                    */
+                    [
+                        // Set the title for your embed
+                        "title" => "$n er nede for telling. ❌",
+
+                        // The type of your embed, will ALWAYS be "rich"
+                        "type" => "rich",
+
+                        // A description for your embed
+                        //"description" => "",
+
+                        /* A timestamp to be displayed below the embed, IE for when an an article was posted
+                        * This must be formatted as ISO8601
+                        */
+                        //"timestamp" => "$current_date_time",
+
+                        // The integer color to be used on the left side of the embed
+                        "color" => hexdec( "FF0000" ),
+                    ]
+                ]
+
+            ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+
+            $ch = curl_init();
+
+            curl_setopt_array( $ch, [
+                CURLOPT_URL => $url,
+                CURLOPT_POST => true,
+                CURLOPT_POSTFIELDS => $hookObject,
+                CURLOPT_HTTPHEADER => [
+                    "Content-Type: application/json"
+                ]
+            ]);
+
+            $response = curl_exec( $ch );
+            curl_close( $ch );
+        }
     
     
     }
