@@ -13,4 +13,5 @@ php artisan schedule:run
 composer install --optimize-autoloader --no-dev
 php artisan key:generate
 npm install
+php artisan migrate --force
 ```

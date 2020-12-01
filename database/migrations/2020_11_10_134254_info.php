@@ -16,7 +16,7 @@ class Info extends Migration
         Schema::create('info', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->text('description');
             $table->string('category');
             $table->timestamp('created_at')->useCurrent();
         });
