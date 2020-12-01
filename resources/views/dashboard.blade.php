@@ -36,10 +36,10 @@
   <div class="form-group">
     <label for="category">Kategori:</label>
     <select class="form-control" id="category" name="category">
-      <option value="✅">✅Online</option>
-      <option value="❌">❌Offline</option>
-      <option value="⚠️">⚠️Warning</option>
-      <option value="🛠️">🛠️Fix</option>
+      <option value="good">✅Online</option>
+      <option value="bad">❌Offline</option>
+      <option value="warning">⚠️Warning</option>
+      <option value="fix">🛠️Fix</option>
     </select>
   </div>
   <div class="form-group">
@@ -52,7 +52,7 @@
 
 <div class="container">
   <h1>Legg til tjeneste:</h1>
-  <form action="{{url('dashboard')}}" method="post" >
+  <form action="{{url('dashboard/update')}}" method="post" >
     @csrf
   <div class="form-group">
     <label for="tittel">Tjeneste navn:</label>
@@ -69,6 +69,7 @@
 <br>
 
 <div class="container">
+  <h1>Fjern tjeneste:</h1>
   @foreach($hosts as $key => $data)
     <ul class="list-group">
       <li class="list-group-item">{{$data->name}} <form action="{{url('dashboard')}}/{{$data->id}}" method="post"> @csrf <button type="submit" class="btn btn-primary">Fjern</button> </form></li>

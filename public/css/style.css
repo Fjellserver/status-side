@@ -33,11 +33,6 @@ ul.timeline > li:before {
     z-index: 400;
 }
 
-body {
-    height: 100vh;
-    overflow: hidden;
-  }
-  
   .green{
     background: #00ff55;
   }

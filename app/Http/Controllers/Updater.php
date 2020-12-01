@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class Updater extends Controller
 {
-    public function formSubmit(Request $request) {
+    public function hostSubmit(Request $request) {
         \DB::table('hosts')->insert(
             ['name' => $request->host, 'ip' => $request->ip]
         );

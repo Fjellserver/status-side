@@ -9,9 +9,9 @@ class UserController extends Controller
 {
     public function formSubmit(Request $request) 
     {
-       // dd($request->all());
+       //dd($request->all());
         \DB::table('info')->insert(
-            ['name' => $request->name, 'description' => $request->description]
+            ['name' => $request->name, 'description' => $request->description, 'category' => $request->category]
         );
 
 // Replace the URL with your own webhook url
@@ -20,16 +20,20 @@ $url = $_ENV['DISCORD_WEBHOOK'];
 $current_date_time = Carbon::now()->toDateTimeString();
 
 // Color frome category
-if ($request->category == "✅") {
+if ($request->category == "good") {
+    $category = "✅";
     $coolor = "00FF00";
 }
-if ($request->category == "❌") {
+if ($request->category == "bad") {
+    $category = "❌";
     $coolor = "FF0000";
 }
-if ($request->category == "⚠️") {
+if ($request->category == "warning") {
+    $category = "⚠️";
     $coolor = "ffff00";
 }
-if ($request->category == "🛠️") {
+if ($request->category == "fix") {
+    $category = "🛠️";
     $coolor = "808080";
 }
 
@@ -55,7 +59,7 @@ $hookObject = json_encode([
          */
         [
             // Set the title for your embed
-            "title" => "$request->category $request->name",
+            "title" => "$category $request->name",
 
             // The type of your embed, will ALWAYS be "rich"
             "type" => "rich",

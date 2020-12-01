@@ -21,10 +21,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 'App\Http\Con
     return view('dashboard');
 })->name('dashboard');
 
-Route::post('dashboard', 'App\Http\Controllers\UserController@formSubmit', function () {
+Route::post('dashboard/', 'App\Http\Controllers\UserController@formSubmit', function () {
 });
 
-Route::post('dashboard', 'App\Http\Controllers\Updater@formSubmit', function () {
+Route::post('dashboard/update', 'App\Http\Controllers\Updater@hostSubmit', function () {
 });
 
 Route::post('dashboard/{id}', 'App\Http\Controllers\Updater@removehost', function () {
