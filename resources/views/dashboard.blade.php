@@ -66,6 +66,17 @@
 </form>
 </div>
 
+<br>
+
+<div class="container">
+  @foreach($hosts as $key => $data)
+    <ul class="list-group">
+      <li class="list-group-item">{{$data->name}} <form action="{{url('dashboard')}}/{{$data->id}}" method="post"> @csrf <button type="submit" class="btn btn-primary">Fjern</button> </form></li>
+    </ul>
+  @endforeach
+  </div>
+
+
   </div>
 </body>
 </html>

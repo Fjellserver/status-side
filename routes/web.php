@@ -17,12 +17,15 @@ Route::get('/', 'App\Http\Controllers\StatusController@show', function () {
     return view('status');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 'App\Http\Controllers\Updater@hosts', function () {
     return view('dashboard');
 })->name('dashboard');
 
 Route::post('dashboard', 'App\Http\Controllers\UserController@formSubmit', function () {
 });
 
-Route::post('dashboard', 'App\Http\Controllers\updater@formSubmit', function () {
+Route::post('dashboard', 'App\Http\Controllers\Updater@formSubmit', function () {
+});
+
+Route::post('dashboard/{id}', 'App\Http\Controllers\Updater@removehost', function () {
 });
