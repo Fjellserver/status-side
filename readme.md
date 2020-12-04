@@ -29,3 +29,10 @@ config/fortify.php
 Dersom du ikke ønsker at hvemsom helst kan registrere seg
 //Features::registration()
 ```
+
+# Linker
+```
+/register
+/login
+/dashboard
+```
