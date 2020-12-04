@@ -15,3 +15,8 @@ php artisan key:generate
 npm install
 php artisan migrate --force
 ```
+## Tips
+Dersom det oppstår problemer prøv:
+```
+php artisan optimize
+```
