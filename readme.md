@@ -30,7 +30,7 @@ Dersom du ikke ønsker at hvemsom helst kan registrere seg
 //Features::registration()
 ```
 
-# Linker
+# Lenker
 ```
 /register
 /login
