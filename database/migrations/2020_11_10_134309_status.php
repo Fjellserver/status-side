@@ -18,7 +18,8 @@ class Status extends Migration
         $table->string('host');
         $table->string('up_down');
         $table->timestamp('created_at')->useCurrent();
-    });
+        $table->timestamp('updated_at')->useCurrentOnUpdate()->default(\DB::raw('CURRENT_TIMESTAMP'));
+    }); 
 }
 
 /**

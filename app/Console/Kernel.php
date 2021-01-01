@@ -25,17 +25,19 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function () {
-            $data = \DB::table('hosts')->get();
+            $host = \DB::table('hosts')->get();
 
-            foreach ($data as $data ) {
+            foreach ($host as $data ) {
             if(checkOnline($data->ip)) {
-            \DB::table('status')->insert(
-                ['host' => $data->name, 'up_down' => 'online']
-            );
+                \DB::table('status')
+                ->updateOrInsert(
+                    ['host' => $data->name, 'up_down' => 'online',]
+                );
             }
             else {
-                \DB::table('status')->insert(
-                    ['host' => $data->name, 'up_down' => 'offline']
+                \DB::table('status')
+                ->updateOrInsert(
+                    ['host' => $data->name, 'up_down' => 'offline',]
                 );
                 offline($data->name);
             }
