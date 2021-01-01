@@ -40,7 +40,7 @@ class Kernel extends ConsoleKernel
                 offline($data->name);
             }
         }
-        })->everyMinute();
+        })->everyTenMinutes();
     
         function checkOnline($domain) {
             $curlInit = curl_init($domain);

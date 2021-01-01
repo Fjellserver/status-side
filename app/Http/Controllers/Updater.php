@@ -11,7 +11,7 @@ class Updater extends Controller
             ['name' => $request->host, 'ip' => $request->ip]
         );
 
-        return redirect()->to('/');
+        return redirect()->back();
     }
 
     public function hosts() {
