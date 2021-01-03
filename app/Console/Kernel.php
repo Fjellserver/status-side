@@ -27,22 +27,21 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
             $host = \DB::table('hosts')->get();
 
-            foreach ($host as $data ) {
-            if(checkOnline($data->ip)) {
-                \DB::table('status')
-                ->updateOrInsert(
-                    ['host' => $data->name, 'up_down' => 'online',]
+            foreach ($host as $host ) {
+            if(checkOnline($host->ip)) {
+                \DB::table('status')->insert(
+                    ['host' => $host->name, 'up_down' => 'online']
                 );
             }
             else {
-                \DB::table('status')
-                ->updateOrInsert(
-                    ['host' => $data->name, 'up_down' => 'offline',]
-                );
-                offline($data->name);
+                 \DB::table('status')->insert(
+                     ['host' => $host->name, 'up_down' => 'offline']
+                 );
+                offline($host->name);
             }
         }
-        })->everyTenMinutes();
+     })->everyTenMinutes();
+        // })->everyMinute();
     
         function checkOnline($domain) {
             $curlInit = curl_init($domain);

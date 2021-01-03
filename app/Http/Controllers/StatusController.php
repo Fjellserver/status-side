@@ -11,9 +11,8 @@ class StatusController extends Controller
     $hosts = \DB::table('hosts')->get();
     $count = $hosts->count();
     $status = \DB::table('status')->latest('created_at')->take($count)->get();
-    $info = \DB::table('info')->latest('created_at')->take(10)->get();
+    $info = \DB::table('info')->latest('created_at')->take(8)->get();
 
-    //dd($status);
         return view('status', ['status' => $status], ['info' => $info]);
     }
 }

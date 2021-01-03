@@ -14,13 +14,19 @@ class Updater extends Controller
         return redirect()->back();
     }
 
-    public function hosts() {
+    public function main() {
         $hosts = \DB::table('hosts')->get();
-        return view('dashboard', ['hosts' => $hosts]);
+        $info = \DB::table('info')->latest('created_at')->get();
+        return view('dashboard', ['hosts' => $hosts, 'info' => $info]);
     }
 
-    public function removehost($id) {
-        \DB::table('hosts')->where('id', '=', $id)->delete();
+    public function removehost($hostid) {
+        \DB::table('hosts')->where('id', '=', $hostid)->delete();
+        return redirect()->back();
+    }
+
+    public function removeinfo($infoid) {
+        \DB::table('info')->where('id', '=', $infoid)->delete();
         return redirect()->back();
     }
 }

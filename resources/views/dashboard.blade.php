@@ -72,11 +72,28 @@
   <h1>Fjern tjeneste:</h1>
   @foreach($hosts as $key => $data)
     <ul class="list-group">
-      <li class="list-group-item">{{$data->name}} <form action="{{url('dashboard')}}/{{$data->id}}" method="post"> @csrf <button type="submit" class="btn btn-primary">Fjern</button> </form></li>
+      <li class="list-group-item"><h5>{{$data->name}}</h5><p>{{$data->created_at}}</p><p>{{$data->ip}}</p><form action="{{url('dashboard')}}/host/{{$data->id}}" method="post"> @csrf <button type="submit" class="btn btn-primary">Fjern</button> </form></li>
     </ul>
   @endforeach
   </div>
 
+  <div class="container mt-5 mb-5">
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+			<h4>Fjern infomelding:</h4>
+			<ul class="timeline">
+      @foreach($info as $key => $data)
+				<li>
+        <a href="#">{{$data->name}}</a>
+					<a class="float-right">{{$data->created_at}}</a>
+					<p>{{$data->description}}</p>
+          <a><form action="{{url('dashboard')}}/info/{{$data->id}}" method="post"> @csrf <button type="submit" class="btn btn-primary">Fjern</button></form></a>
+				</li>
+      @endforeach
+			</ul>
+		</div>
+	</div>
+</div>
 
   </div>
 </body>
