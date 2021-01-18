@@ -38,3 +38,9 @@ Dersom du ikke ønsker at hvemsom helst kan registrere seg
 /login
 /dashboard
 ```
+# Bilder
+Status side
+![status side](https://www.nextcloud.pomdre.net/index.php/apps/files_sharing/publicpreview/49SewcakqTFq36R?x=3831&y=1422&a=true&file=status%2520side.PNG&scalingup=0)
+
+Dashboard for admin
+![admin](https://www.nextcloud.pomdre.net/index.php/apps/files_sharing/publicpreview/MiqpWNYqnyjqKMX?x=3831&y=1422&a=true&file=status%2520admin.PNG&scalingup=0)
