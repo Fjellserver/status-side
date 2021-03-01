@@ -31,7 +31,7 @@
     <div class="alert alert-success" role="alert">
       <div class="d-flex justify-content-between">
         <div>
-          <div class="col-6">{{$data->host}}</div>
+          <div class="col-12">{{$data->host}}</div>
         </div>
         <div>
           <div class="circle pulse green"></div>
@@ -43,7 +43,7 @@
     <div class="alert alert-danger" role="alert">
       <div class="d-flex justify-content-between">
           <div>
-            <div class="col-6">{{$data->host}}</div>
+            <div class="col-12">{{$data->host}}</div>
           </div>
           <div>
             <div class="circle pulse red"></div>
