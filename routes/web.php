@@ -27,7 +27,7 @@ Route::middleware(['auth:sanctum', 'verified'])->post('dashboard/', 'App\Http\Co
 Route::middleware(['auth:sanctum', 'verified'])->post('dashboard/update', 'App\Http\Controllers\Updater@hostSubmit', function () {
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->post('dashboard/host/{hostid}', 'App\Http\Controllers\Updater@removehost', function () {
+Route::middleware(['auth:sanctum', 'verified'])->post('dashboard/host/{rank}', 'App\Http\Controllers\Updater@removehost', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->post('dashboard/info/{hostid}', 'App\Http\Controllers\Updater@removeinfo', function () {

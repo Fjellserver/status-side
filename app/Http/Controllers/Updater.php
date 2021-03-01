@@ -8,7 +8,7 @@ class Updater extends Controller
 {
     public function hostSubmit(Request $request) {
         \DB::table('hosts')->insert(
-            ['name' => $request->host, 'ip' => $request->ip]
+            ['name' => $request->host, 'ip' => $request->ip, 'rank' => $request->rank]
         );
 
         return redirect()->back();
@@ -20,8 +20,9 @@ class Updater extends Controller
         return view('dashboard', ['hosts' => $hosts, 'info' => $info]);
     }
 
-    public function removehost($hostid) {
-        \DB::table('hosts')->where('id', '=', $hostid)->delete();
+    public function removehost($rank) {
+        \DB::table('hosts')->where('rank', '=', $rank)->delete();
+        \DB::table('status')->where('rank', '=', $rank)->delete();
         return redirect()->back();
     }
 

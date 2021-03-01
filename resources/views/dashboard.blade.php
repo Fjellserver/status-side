@@ -62,6 +62,10 @@
     <label for="beskrivelse">Tjeneste adresse:</label>
     <input type="text" class="form-control" id="ip" name="ip" placeholder="Skriv adressen til tjenesten">
   </div>
+  <div class="form-group">
+    <label for="beskrivelse">Tjeneste rank: <small>1 kommer øverst på siden</small></label>
+    <input type="number" class="form-control" id="rank" name="rank" placeholder="1 kommer øverst på siden">
+  </div>
   <button type="submit" class="btn btn-primary">Legg til</button>
 </form>
 </div>
@@ -72,7 +76,7 @@
   <h1>Fjern tjeneste:</h1>
   @foreach($hosts as $key => $data)
     <ul class="list-group">
-      <li class="list-group-item"><h5>{{$data->name}}</h5><p>{{$data->created_at}}</p><p>{{$data->ip}}</p><form action="{{url('dashboard')}}/host/{{$data->id}}" method="post"> @csrf <button type="submit" class="btn btn-primary">Fjern</button> </form></li>
+      <li class="list-group-item"><h5>{{$data->name}}</h5><p>{{$data->created_at}}</p><p>{{$data->ip}}</p><p>Rank: {{$data->rank}}</p><form action="{{url('dashboard')}}/host/{{$data->rank}}" method="post"> @csrf <button type="submit" class="btn btn-primary">Fjern</button> </form></li>
     </ul>
   @endforeach
   </div>

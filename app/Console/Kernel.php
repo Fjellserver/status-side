@@ -31,12 +31,12 @@ class Kernel extends ConsoleKernel
             if(checkOnline($host->ip)) {
                 \DB::table('status')->updateOrInsert(
                     ['host' => $host->name],
-                    ['up_down' => 'online', 'created_at' => now()],
+                    ['up_down' => 'online', 'created_at' => now(), 'rank' => $host->rank],
                 );
             }
             else {
                  \DB::table('status')->updateOrInsert(
-                    ['host' => $host->name],
+                    ['host' => $host->name, 'rank' => $host->rank],
                     ['up_down' => 'offline', 'created_at' => now()],
                  );
                 offline($host->name);
