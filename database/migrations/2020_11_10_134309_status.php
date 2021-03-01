@@ -14,10 +14,9 @@ class Status extends Migration
     public function up()
     {
     Schema::create('status', function (Blueprint $table) {
-        $table->id();
         $table->string('host');
         $table->string('up_down');
-        $table->timestamp('created_at')->useCurrent();
+        $table->string('created_at');
     });
 }
 

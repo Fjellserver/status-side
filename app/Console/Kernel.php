@@ -29,19 +29,20 @@ class Kernel extends ConsoleKernel
 
             foreach ($host as $host ) {
             if(checkOnline($host->ip)) {
-                \DB::table('status')->insert(
-                    ['host' => $host->name, 'up_down' => 'online']
+                \DB::table('status')->updateOrInsert(
+                    ['host' => $host->name],
+                    ['up_down' => 'online', 'created_at' => now()],
                 );
             }
             else {
-                 \DB::table('status')->insert(
-                     ['host' => $host->name, 'up_down' => 'offline']
+                 \DB::table('status')->updateOrInsert(
+                    ['host' => $host->name],
+                    ['up_down' => 'offline', 'created_at' => now()],
                  );
                 offline($host->name);
             }
         }
-     })->everyTenMinutes();
-        // })->everyMinute();
+         })->everyMinute();
     
         function checkOnline($domain) {
             $curlInit = curl_init($domain);
