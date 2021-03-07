@@ -15,7 +15,7 @@ class UserController extends Controller
         );
 
 // Replace the URL with your own webhook url
-$url = env('DISCORD_WEBHOOK');
+$url = $_ENV['DISCORD_WEBHOOK'];
 
 $current_date_time = Carbon::now()->toDateTimeString();
 
