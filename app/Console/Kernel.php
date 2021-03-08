@@ -61,7 +61,7 @@ class Kernel extends ConsoleKernel
 
         function offline($n) {
             // Replace the URL with your own webhook url
-            $url = env('DISCORD_WEBHOOK_DOWN_ALERT');
+            $url = config('discord.DISCORD_WEBHOOK_DOWN_ALERT');
 
            // $current_date_time = Carbon::now()->toDateTimeString();
 

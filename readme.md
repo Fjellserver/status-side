@@ -32,6 +32,8 @@ Dersom du ikke ønsker at hvemsom helst kan registrere seg
 //Features::registration()
 ```
 
+Discord Webhook finnes under /config/discord.php
+
 # Lenker
 ```
 /register
