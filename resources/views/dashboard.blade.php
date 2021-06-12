@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="{{url('/css/style.css')}}">
 </head>
 <body>
-
+<div class="d-flex flex-column min-vh-100">
 <nav class="navbar navbar-light navbar-expand-lg navbar-static-top bg-secondary text-uppercase" style="padding-top: 0%; padding-bottom: 0%;" id="mainNav">
         <div class="container"><a class="navbar-brand js-scroll-trigger" href="https://fjellserver.no">FJELLSERVER&nbsp;<img id="nav-logo" alt="logo" src="https://fjellserver.no/assets/img/Fjellserver%20-logo%20icon%20transparent.svg"></a>
         </div>
@@ -106,7 +106,8 @@
 </div>
 </div>
 
-<footer class="footer text-center fixed-bottom" style="background-color: #1B316B; padding-bottom: 0%; padding-top: 0%;">
+<main class="flex-fill"></main>
+<footer class="footer text-center" style="background-color: #1B316B; padding-bottom: 0%; padding-top: 0%;">
     <div class="container">
         <div class="row">
             <div class="col-md-4 mb-5 mb-lg-0">
@@ -137,6 +138,7 @@
         </div>
     </div>
 </footer>
+</div>
     <script src="https://fjellserver.no/assets/js/jquery.min.js"></script>
     <script src="https://fjellserver.no/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
