@@ -17,6 +17,7 @@ class Hosts extends Migration
             $table->id();
             $table->string('name');
             $table->string('ip');
+            $table->string('port');
             $table->string('rank');
             $table->timestamp('created_at')->useCurrent();
         });
