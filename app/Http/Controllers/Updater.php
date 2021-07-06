@@ -8,7 +8,7 @@ class Updater extends Controller
 {
     public function hostSubmit(Request $request) {
         \DB::table('hosts')->insert(
-            ['name' => $request->host, 'ip' => $request->ip, 'rank' => $request->rank]
+            ['name' => $request->host, 'ip' => $request->ip, 'port' => $request->port, 'rank' => $request->rank]
         );
 
         return redirect()->back();

@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
             $host = \DB::table('hosts')->get();
 
             foreach ($host as $host ) {
-            if(checkOnline($host->ip)) {
+            if(checkOnline($host->ip, $host->port)) {
                 \DB::table('status')->updateOrInsert(
                     ['host' => $host->name],
                     ['up_down' => 'online', 'created_at' => now(), 'rank' => $host->rank],
@@ -44,12 +44,13 @@ class Kernel extends ConsoleKernel
         }
          })->everyMinute();
     
-        function checkOnline($domain) {
+        function checkOnline($domain, $port) {
             $curlInit = curl_init($domain);
-            curl_setopt($curlInit,CURLOPT_CONNECTTIMEOUT,10);
+            curl_setopt($curlInit,CURLOPT_CONNECTTIMEOUT,15);
             curl_setopt($curlInit,CURLOPT_HEADER,true);
             curl_setopt($curlInit,CURLOPT_NOBODY,true);
             curl_setopt($curlInit,CURLOPT_RETURNTRANSFER,true);
+            curl_setopt($curlInit, CURLOPT_PORT, $port);
          
             //get answer
             $response = curl_exec($curlInit);
