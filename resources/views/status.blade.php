@@ -29,7 +29,7 @@
         </div>
 </nav>
 
-  <div class="container" style="margin-top: 1vh;">
+  <div class="container" style="margin-top: 16px;">
   @foreach($status as $key => $data)
     @if($data->up_down == 'online')
     <div class="alert alert-success" role="alert">
