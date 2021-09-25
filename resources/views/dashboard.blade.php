@@ -101,8 +101,8 @@
         <p>{{$data->ip}}</p>
         <p>Port: {{$data->port}}</p>
         <p>Rank: {{$data->rank}}</p>
-        <a type="submit" class="btn btn-primary" href="{{ url('dashboard')}}/hostedit?host={{$data->rank}}">Endre</a>
-         <form action="{{url('dashboard')}}/host/{{$data->rank}}" method="post"> @csrf 
+        <a type="submit" class="btn btn-primary" href="{{ url('dashboard')}}/hostedit?host={{$data->id}}">Endre</a>
+         <form action="{{url('dashboard')}}/host/{{$data->id}}" method="post"> @csrf 
           <button type="submit" class="btn btn-primary float-right">Fjern</button>
          </form>
       </li>

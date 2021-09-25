@@ -9,8 +9,10 @@ class Updater extends Controller
     public function hostSubmit(Request $request) {
 
         $request->validate([
-            'name' => 'required',
+            'host' => 'required',
             'ip' => 'required',
+            'port' => 'required',
+            'rank' => 'required',
         ]);
 
         \DB::table('hosts')->insert(
