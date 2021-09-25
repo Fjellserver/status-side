@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 class Updater extends Controller
 {
     public function hostSubmit(Request $request) {
+
+        $request->validate([
+            'name' => 'required',
+            'ip' => 'required',
+        ]);
+
         \DB::table('hosts')->insert(
             ['name' => $request->host, 'ip' => $request->ip, 'port' => $request->port, 'rank' => $request->rank]
         );
@@ -29,5 +35,26 @@ class Updater extends Controller
     public function removeinfo($infoid) {
         \DB::table('info')->where('id', '=', $infoid)->delete();
         return redirect()->back();
+    }
+
+    public function hostEditShow() {
+        $input = \Input::get('host');
+        $host = \DB::table('hosts')->where('id', $input)->get();
+        return view('hostedit', ['host' => $host]);
+    }
+
+    public function hostEdit(Request $request) {
+
+        $request->validate([
+            'host' => 'required',
+            'ip' => 'required',
+        ]);
+        
+        \DB::table('hosts')->where('id', $request)->update   
+        (
+            ['name' => $request->host, 'ip' => $request->ip, 'port' => $request->port, 'rank' => $request->rank]
+        );
+
+        return redirect()->route('dashboard');
     }
 }

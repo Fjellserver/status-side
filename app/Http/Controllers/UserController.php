@@ -7,8 +7,12 @@ use Carbon\Carbon;
 
 class UserController extends Controller
 {
-    public function formSubmit(Request $request) 
-    {
+    public function formSubmit(Request $request)  {
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'category' => 'required',
+        ]);
        //dd($request->all());
         \DB::table('info')->insert(
             ['name' => $request->name, 'description' => $request->description, 'category' => $request->category]

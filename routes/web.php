@@ -21,6 +21,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 'App\Http\Con
     return view('dashboard');
 })->name('dashboard');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('dashboard/hostedit', ['as' => 'host', 'uses' => 'App\Http\Controllers\Updater@hostEditShow'], function () {
+    return view('hostedit');
+})->name('hostedit');
+
 Route::middleware(['auth:sanctum', 'verified'])->post('dashboard/', 'App\Http\Controllers\UserController@formSubmit', function () {
 });
 
@@ -31,4 +35,7 @@ Route::middleware(['auth:sanctum', 'verified'])->post('dashboard/host/{rank}', '
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->post('dashboard/info/{hostid}', 'App\Http\Controllers\Updater@removeinfo', function () {
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->post('dashboard/hostedit/update', 'App\Http\Controllers\Updater@hostEdit', function () {
 });
