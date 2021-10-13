@@ -31,7 +31,7 @@
 
   <div class="container" style="margin-top: 16px;">
   @foreach($status as $key => $data)
-    @if($data->up_down == 'online')
+    @if($data->down_count < 2)
     <div class="alert alert-success" role="alert">
       <div class="d-flex justify-content-between">
         <div>
@@ -43,7 +43,7 @@
       </div>
     </div>
     @endif
-    @if($data->up_down == 'offline')
+    @if($data->down_count > 2)
     <div class="alert alert-danger" role="alert">
       <div class="d-flex justify-content-between">
           <div>
