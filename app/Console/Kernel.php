@@ -31,22 +31,26 @@ class Kernel extends ConsoleKernel
             if(checkOnline($host->ip, $host->port)) {
                 \DB::table('status')->updateOrInsert(
                     ['host' => $host->name],
-                    ['up_down' => 'online', 'created_at' => now(), 'rank' => $host->rank],
+                    ['up_down' => 'online', 'created_at' => now(), 'rank' => $host->rank, 'down_count' => '0'],
                 );
             }
             else {
+                $counter = \DB::table('status')->where('host', $host->name)->value('down_count');
                  \DB::table('status')->updateOrInsert(
                     ['host' => $host->name, 'rank' => $host->rank],
-                    ['up_down' => 'offline', 'created_at' => now()],
+                    ['up_down' => 'offline', 'created_at' => now(), 'down_count' => $counter+1],
                  );
-                offline($host->name);
+                 error_log($counter);
+                 if($counter > 2) {
+                    offline($host->name);
+                 }
             }
         }
          })->everyMinute();
     
         function checkOnline($domain, $port) {
             $curlInit = curl_init($domain);
-            curl_setopt($curlInit,CURLOPT_CONNECTTIMEOUT,15);
+            curl_setopt($curlInit,CURLOPT_CONNECTTIMEOUT,30);
             curl_setopt($curlInit,CURLOPT_HEADER,true);
             curl_setopt($curlInit,CURLOPT_NOBODY,true);
             curl_setopt($curlInit,CURLOPT_RETURNTRANSFER,true);

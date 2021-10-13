@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddPortHosts extends Migration
+class DownCount extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class AddPortHosts extends Migration
      */
     public function up()
     {
-        Schema::table('hosts', function (Blueprint $table) {
-            $table->string('port');
-        });
+        {
+            Schema::table('status', function (Blueprint $table) {
+                $table->string('down_count');
+            });
+        }
     }
 
     /**
@@ -25,7 +27,7 @@ class AddPortHosts extends Migration
      */
     public function down()
     {
-        Schema::table('hosts', function (Blueprint $table) {
+        Schema::table('status', function (Blueprint $table) {
             //
         });
     }
