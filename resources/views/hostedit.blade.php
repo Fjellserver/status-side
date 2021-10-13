@@ -53,11 +53,15 @@
   </div>
   <div class="form-group">
     <label for="beskrivelse">Port til tjeneste:</label>
-    <input type="number" class="form-control" id="port" name="port" placeholder="Skriv porten til tjenesten" {{$data->port}}>
+    <input type="number" class="form-control" id="port" name="port" placeholder="Skriv porten til tjenesten" value="{{$data->port}}">
   </div>
   <div class="form-group">
     <label for="beskrivelse">Tjeneste rank: <small>1 kommer øverst på siden</small></label>
     <input type="number" class="form-control" id="rank" name="rank" placeholder="1 kommer øverst på siden" value="{{$data->rank}}">
+  </div>
+  <div class="form-group">
+    <label for="beskrivelse">ID:</label>
+    <input type="number" class="form-control" id="id" name="id" placeholder="Id" value="{{$data->id}}" readonly>
   </div>
   <button type="submit" class="btn btn-primary">Oppdater</button>
 </form>

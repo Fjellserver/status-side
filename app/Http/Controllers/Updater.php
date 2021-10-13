@@ -46,13 +46,11 @@ class Updater extends Controller
     }
 
     public function hostEdit(Request $request) {
-
         $request->validate([
             'host' => 'required',
             'ip' => 'required',
         ]);
-        
-        \DB::table('hosts')->where('id', $request)->update   
+        \DB::table('hosts')->where('id', $request->id)->update   
         (
             ['name' => $request->host, 'ip' => $request->ip, 'port' => $request->port, 'rank' => $request->rank]
         );
