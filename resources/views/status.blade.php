@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="theme-color" content="#1b316b"/>
-    <title>Fjellserver.no | Status side</title>
+    <title>Status side| Fjellserver.no</title>
+    <meta name="description" content="Er serveren din nede? Sjekk status på systemet hos fjellserver.no">
     <meta property="og:type" content="website">
     <link rel="icon" type="image/png" sizes="36x36" href="https://fjellserver.no/assets/img/android-icon-36x36.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://fjellserver.no/assets/img/apple-touch-icon.png">
