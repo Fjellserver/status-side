@@ -1,4 +1,4 @@
-# Status siden til fjellserver skrevet med PhP og Laravel
+# Status-siden til fjellserver skrevet med PhP og Laravel
 ## Cron jobb for å teste om en server er oppe eller nede
 ```bash
 * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
@@ -41,7 +41,7 @@ Discord Webhook finnes under /config/discord.php
 /dashboard
 ```
 # Bilder
-Status side
+Status-side
 ![status side](https://www.nextcloud.pomdre.net/index.php/apps/files_sharing/publicpreview/49SewcakqTFq36R?x=3831&y=1422&a=true&file=status%2520side.PNG&scalingup=0)
 
 Dashboard for admin
