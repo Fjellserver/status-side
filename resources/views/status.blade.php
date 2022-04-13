@@ -22,6 +22,15 @@
     <link rel="stylesheet" href="https://fjellserver.no/assets/css/logo.css">
     <link rel="stylesheet" href="https://fjellserver.no/assets/css/main.css">
     <link rel="stylesheet" href="{{url('/css/style.css')}}">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MHEBZGDRYE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-MHEBZGDRYE');
+    </script>
 </head>
 <body>
 <div class="d-flex flex-column min-vh-100">
