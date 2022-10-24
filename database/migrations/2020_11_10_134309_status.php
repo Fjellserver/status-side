@@ -16,7 +16,7 @@ class Status extends Migration
     Schema::create('status', function (Blueprint $table) {
         $table->string('host');
         $table->string('up_down');
-        $tabel->string('down_count');
+        $table->string('down_count');
         $table->string('rank');
         $table->string('created_at');
     });
