@@ -74,13 +74,21 @@
 			<ul class="timeline">
       @foreach($info as $key => $data)
 				<li>
-          <p>{{date("d.m.Y, H:i", strtotime($data->created_at))}}</p>
-          <p class="font-weight-bold">{{$data->name}}</p>  
-					<p class="font-weight-normal">{!! nl2br(e($data->description)) !!}</p>
+          <div class="d-flex justify-content-between">
+            <div>
+              <p><b>{{$data->name}}</b></p>
+            </div>
+            <div>
+              {{$data->created_at}}
+            </div>
+       </div>
+					<p>{!! nl2br(e($data->description)) !!}</p>
 				</li>
       @endforeach
 			</ul>
-  </div>
+		</div>
+	</div>
+</div>
 </div>
 
 <main class="flex-fill"></main>
