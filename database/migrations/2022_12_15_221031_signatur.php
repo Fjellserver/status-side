@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DownCount extends Migration
+class Signatur extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class DownCount extends Migration
      */
     public function up()
     {
-        {
-            Schema::table('status', function (Blueprint $table) {
-                $table->string('down_count');
-            });
-        }
+        Schema::table('info', function (Blueprint $table) {
+            $table->text('signatur');
+        });
     }
 
     /**
@@ -27,8 +25,8 @@ class DownCount extends Migration
      */
     public function down()
     {
-        Schema::table('status', function (Blueprint $table) {
-            Schema::drop('status');
+        Schema::table('info', function (Blueprint $table) {
+            Schema::drop('info');
         });
     }
 }

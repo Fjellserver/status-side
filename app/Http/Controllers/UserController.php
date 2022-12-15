@@ -12,10 +12,10 @@ class UserController extends Controller
             'name' => 'required',
             'description' => 'required',
             'category' => 'required',
+            'signatur' => 'required',
         ]);
-       //dd($request->all());
         \DB::table('info')->insert(
-            ['name' => $request->name, 'description' => $request->description, 'category' => $request->category]
+            ['name' => $request->name, 'description' => $request->description, 'category' => $request->category, 'signatur' => $request->signatur]
         );
 
 // Replace the URL with your own webhook url

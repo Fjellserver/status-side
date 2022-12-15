@@ -61,7 +61,7 @@
     <label for="category">Kategori:</label>
     <select class="form-control" id="category" name="category">
       <option value="good">✅Tjenesten er online</option>
-      <option value="bad">❌Tjenesten er Offline</option>
+      <option value="bad">❌Tjenesten er offline</option>
       <option value="warning">⚠️Advarsel</option>
       <option value="fix">🛠️Planlagt vedlikehold</option>
     </select>
@@ -69,6 +69,11 @@
   <div class="form-group">
     <label for="beskrivelse">Beskrivelse:</label>
     <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="signatur">Signatur:</label>
+    <input type="text" class="form-control" id="signatur" name="signatur" placeholder="Signatur" value="Test signatur">
+  
   </div>
   <button type="submit" class="btn btn-primary">Publiser</button>
 </form>
