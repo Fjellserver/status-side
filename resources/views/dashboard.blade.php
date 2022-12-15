@@ -60,10 +60,10 @@
   <div class="form-group">
     <label for="category">Kategori:</label>
     <select class="form-control" id="category" name="category">
-      <option value="good">✅Online</option>
-      <option value="bad">❌Offline</option>
-      <option value="warning">⚠️Warning</option>
-      <option value="fix">🛠️Fix</option>
+      <option value="good">✅Tjenesten er online</option>
+      <option value="bad">❌Tjenesten er Offline</option>
+      <option value="warning">⚠️Advarsel</option>
+      <option value="fix">🛠️Planlagt vedlikehold</option>
     </select>
   </div>
   <div class="form-group">
