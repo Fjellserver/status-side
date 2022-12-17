@@ -25,7 +25,8 @@ class Updater extends Controller
     public function main() {
         $hosts = \DB::table('hosts')->get();
         $info = \DB::table('info')->latest('created_at')->get();
-        return view('dashboard', ['hosts' => $hosts, 'info' => $info]);
+        $infoone = \DB::table('info')->latest('created_at')->first();
+        return view('dashboard', ['hosts' => $hosts, 'info' => $info, 'infoone' => $infoone]);
     }
 
     public function removehost($rank) {

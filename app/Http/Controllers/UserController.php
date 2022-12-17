@@ -69,7 +69,7 @@ $hookObject = json_encode([
             "type" => "rich",
 
             // A description for your embed
-            "description" => "$request->description",
+            "description" => "$request->description \n\n $request->signatur",
 
             /* A timestamp to be displayed below the embed, IE for when an an article was posted
              * This must be formatted as ISO8601

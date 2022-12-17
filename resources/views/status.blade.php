@@ -77,6 +77,7 @@
           <p>{{date("d.m.Y, H:i", strtotime($data->created_at))}}</p>
           <p class="font-weight-bold">{{$data->name}}</p>  
 					<p class="font-weight-normal">{!! nl2br(e($data->description)) !!}</p>
+          <p class="font-weight-normal">{!! nl2br(e($data->signatur)) !!}</p>
 				</li>
       @endforeach
 			</ul>
