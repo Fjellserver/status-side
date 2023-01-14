@@ -18,7 +18,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="assets/fontawesome6\css\brands.min.css">
+    <link rel="stylesheet" href="assets/fontawesome6\css\fontawesome.min.css">
+    <link rel="stylesheet" href="assets/fontawesome6\css\solid.min.css">
     <link rel="stylesheet" href="https://fjellserver.no/assets/css/logo.css">
     <link rel="stylesheet" href="https://fjellserver.no/assets/css/main.css">
     <link rel="stylesheet" href="{{url('/css/style.css')}}">
@@ -103,6 +105,9 @@
           role="button" aria-label="Instagram" href="https://www.instagram.com/fjellserver/" target="_blank"><i
             class="fab fa-instagram fa-fw"></i></a></li>
       <li class="list-inline-item"><a class="btn btn-outline-light btn-social text-center rounded-circle"
+          role="button" aria-label="tiktok" href="https://www.tiktok.com/@fjellserver" target="_blank"><i
+            class="fa-brands fa-tiktok fa-fw"></i></a></li>
+      <li class="list-inline-item"><a class="btn btn-outline-light btn-social text-center rounded-circle"
           role="button" aria-label="Discord" href="https://discord.gg/STX8gt6" target="_blank"><i
             class="fab fa-discord fa-fw"></i></a></li>
       <li class="list-inline-item"><a class="btn btn-outline-light btn-social text-center rounded-circle"
@@ -146,7 +151,7 @@
       <div class="col-md">
         <a class="font-weight-bold text-uppercase" style="font-size: 1.3rem; color: white;">Snarveier</a>
         <div class="col-md">
-          <a href="http://kunde.fjellserver.no/" target="_blank" style="color: white;">Kundeportal</a>
+          <a href="https://kunde.fjellserver.no/" target="_blank" style="color: white;">Kundeportal</a>
         </div>
         <div class="col-md">
           <a href="https://panel.fjellserver.no/" target="_blank" style="color: white;">Kontrollpanel</a>
