@@ -42,7 +42,7 @@ Discord Webhook finnes under /config/discord.php
 ```
 # Bilder
 Status-side
-![status side](https://www.nextcloud.pomdre.net/index.php/apps/files_sharing/publicpreview/49SewcakqTFq36R?x=3831&y=1422&a=true&file=status%2520side.PNG&scalingup=0)
+![status side](https://nextcloud.pomdre.net/index.php/apps/files_sharing/publicpreview/o3zeHNG8Gz6co6p?x=3822&y=1421&a=true&file=status%2520side.PNG&scalingup=0)
 
 Dashboard for admin
-![admin](https://www.nextcloud.pomdre.net/index.php/apps/files_sharing/publicpreview/MiqpWNYqnyjqKMX?x=3831&y=1422&a=true&file=status%2520admin.PNG&scalingup=0)
+![admin](https://nextcloud.pomdre.net/index.php/apps/files_sharing/publicpreview/AGnSQXdmbqyHAHw?x=3822&y=1421&a=true&file=status%2520admin.PNG&scalingup=0)
