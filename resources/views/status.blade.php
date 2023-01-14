@@ -70,22 +70,20 @@
   @endforeach
   </div>
 
-  <div class="container mt-5 mb-5">
-	<div class="row">
+  <div class="container">
 		<div class="col-md-6 offset-md-3">
-			<h4>Siste hendelser</h4>
+			<h4>Siste hendelser:</h4>
 			<ul class="timeline">
       @foreach($info as $key => $data)
 				<li>
-        <a href="#">{{$data->name}}</a>
-					<a class="float-right">{{$data->created_at}}</a>
-					<p>{{$data->description}}</p>
+          <p>{{date("d.m.Y, H:i", strtotime($data->created_at))}}</p>
+          <p class="font-weight-bold">{{$data->name}}</p>  
+					<p class="font-weight-normal">{!! nl2br(e($data->description)) !!}</p>
+          <p class="font-weight-normal">{!! nl2br(e($data->signatur)) !!}</p>
 				</li>
       @endforeach
 			</ul>
-		</div>
-	</div>
-</div>
+  </div>
 </div>
 
 <main class="flex-fill"></main>

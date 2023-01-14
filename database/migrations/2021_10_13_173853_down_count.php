@@ -28,7 +28,7 @@ class DownCount extends Migration
     public function down()
     {
         Schema::table('status', function (Blueprint $table) {
-            //
+            Schema::drop('status');
         });
     }
 }

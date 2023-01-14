@@ -62,15 +62,20 @@
   <div class="form-group">
     <label for="category">Kategori:</label>
     <select class="form-control" id="category" name="category">
-      <option value="good">✅Online</option>
-      <option value="bad">❌Offline</option>
-      <option value="warning">⚠️Warning</option>
-      <option value="fix">🛠️Fix</option>
+      <option value="good">✅Tjenesten er online</option>
+      <option value="bad">❌Tjenesten er offline</option>
+      <option value="warning">⚠️Advarsel</option>
+      <option value="fix">🛠️Planlagt vedlikehold</option>
     </select>
   </div>
   <div class="form-group">
     <label for="beskrivelse">Beskrivelse:</label>
-    <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+    <textarea class="form-control" id="description" name="description" rows="5"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="signatur">Signatur:</label>
+    <textarea type="text" class="form-control" id="signatur" name="signatur" placeholder="Skriv en signatur her" rows="3" required>{{ $infoone->signatur }}</textarea>
+  
   </div>
   <button type="submit" class="btn btn-primary">Publiser</button>
 </form>
@@ -131,6 +136,7 @@
         <a href="#">{{$data->name}}</a>
 					<a class="float-right">{{$data->created_at}}</a>
 					<p>{{$data->description}}</p>
+          <p>{{$data->signatur}}</p>
           <a><form action="{{url('dashboard')}}/info/{{$data->id}}" method="post"> @csrf <button type="submit" class="btn btn-primary">Fjern</button></form></a>
 				</li>
       @endforeach
