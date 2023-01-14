@@ -124,6 +124,9 @@
         <div class="col-md">
           <a href="https://fjellserver.no/informasjonskapsler/" style="color: white;">Informasjonskapsler</a>
         </div>
+        <div class="col-md">
+          <a href="https://fjellserver.no/personvernerklæring/" style="color: white;">Personvernerklæring</a>
+        </div>
       </div>
 
       <div class="col-md">
