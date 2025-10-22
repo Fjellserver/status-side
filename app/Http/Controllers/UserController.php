@@ -4,100 +4,120 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
-    public function formSubmit(Request $request)  {
+    public function formSubmit(Request $request) 
+    {
+        // 1. VALIDATION AND DATABASE INSERT (Runs first)
         $request->validate([
             'name' => 'required',
             'description' => 'required',
             'category' => 'required',
             'signatur' => 'required',
         ]);
+
         \DB::table('info')->insert(
             ['name' => $request->name, 'description' => $request->description, 'category' => $request->category, 'signatur' => $request->signatur]
         );
 
-// Replace the URL with your own webhook url
-$url = config('discord.DISCORD_WEBHOOK');
+        // 2. RETRIEVE AND VALIDATE WEBHOOK URL
+        $url = config('discord.DISCORD_WEBHOOK');
 
-$current_date_time = Carbon::now()->toDateTimeString();
+        // Log the value that was loaded (security-conscious logging)
+        if (is_string($url) && strlen($url) > 20) {
+            Log::info('Discord Webhook config loaded. URL starts with: ' . substr($url, 0, 30) . '...');
+        } else {
+            Log::warning('Discord Webhook config is missing or invalid type.');
+        }
 
-// Color frome category
-if ($request->category == "good") {
-    $category = "✅";
-    $coolor = "00FF00";
-}
-if ($request->category == "bad") {
-    $category = "❌";
-    $coolor = "FF0000";
-}
-if ($request->category == "warning") {
-    $category = "⚠️";
-    $coolor = "ffff00";
-}
-if ($request->category == "fix") {
-    $category = "🛠️";
-    $coolor = "808080";
-}
+        // Check if the URL is valid and looks like a Discord Webhook
+        $is_valid_url = filter_var($url, FILTER_VALIDATE_URL);
+        $is_discord_webhook = is_string($url) && str_starts_with($url, 'https://discord.com/api/webhooks/');
 
-$hookObject = json_encode([
-    /*
-     * The username shown in the message
-     */
-    "username" => "Fjellserver.no | Driftsmeldinger",
-    /*
-     * Whether or not to read the message in Text-to-speech
-     */
-    "tts" => false,
-    /*
-     * File contents to send to upload a file
-     */
-    // "file" => "",
-    /*
-     * An array of Embeds
-     */
-    "embeds" => [
-        /*
-         * Our first embed
-         */
-        [
-            // Set the title for your embed
-            "title" => "$category $request->name",
+        if (!$is_valid_url || !$is_discord_webhook) {
+            Log::error("Invalid Discord Webhook URL format. Check .env (DISCORD_WEBHOOK).");
+            Log::debug("Attempted Webhook URL: " . (is_string($url) ? $url : 'null/not a string'));
+            return redirect()->back(); 
+        }
 
-            // The type of your embed, will ALWAYS be "rich"
-            "type" => "rich",
+        // 3. PREPARE DISCORD MESSAGE
+        $category = "❓";
+        $coolor = "808080"; 
 
-            // A description for your embed
-            "description" => "$request->description\n\n$request->signatur",
+        switch ($request->category) {
+            case "good":
+                $category = "✅";
+                $coolor = "00FF00"; 
+                break;
+            case "bad":
+                $category = "❌";
+                $coolor = "FF0000"; 
+                break;
+            case "warning":
+                $category = "⚠️";
+                $coolor = "FFFF00"; 
+                break;
+            case "fix":
+                $category = "🛠️";
+                $coolor = "808080"; 
+                break;
+        }
 
-            /* A timestamp to be displayed below the embed, IE for when an an article was posted
-             * This must be formatted as ISO8601
-             */
-            "timestamp" => "$current_date_time",
+        $current_date_time = Carbon::now()->toDateTimeString();
 
-            // The integer color to be used on the left side of the embed
-            "color" => hexdec( "$coolor" ),
-        ]
-    ]
+        $hookObject = json_encode([
+            "username" => "Fjellserver.no | Driftsmeldinger",
+            "tts" => false,
+            "embeds" => [
+                [
+                    "title" => "$category $request->name",
+                    "type" => "rich",
+                    "description" => "$request->description\n\n$request->signatur",
+                    "timestamp" => $current_date_time,
+                    "color" => hexdec( $coolor ), 
+                ]
+            ]
+        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
 
-], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+        // 4. EXECUTE C-URL REQUEST
+        $ch = curl_init();
 
-$ch = curl_init();
+        curl_setopt_array( $ch, [
+            CURLOPT_URL => $url,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => $hookObject,
+            CURLOPT_RETURNTRANSFER => true, 
+            CURLOPT_HTTPHEADER => [
+                "Content-Type: application/json"
+            ],
+        ]);
 
-curl_setopt_array( $ch, [
-    CURLOPT_URL => $url,
-    CURLOPT_POST => true,
-    CURLOPT_POSTFIELDS => $hookObject,
-    CURLOPT_HTTPHEADER => [
-        "Content-Type: application/json"
-    ]
-]);
+        // 5. CHECK C-URL RESPONSE AND LOG ERRORS
+        $response = curl_exec($ch);
 
-$response = curl_exec($ch);
-curl_close($ch);
+        // **CRITICAL STEP:** Check for a complete cURL failure (Status: 0)
+        if ($response === false) {
+            $curl_error = curl_error($ch);
+            $curl_errno = curl_errno($ch);
 
-return redirect()->back();
+            Log::error("Discord Webhook cURL Execution Failed! Check server firewall or PHP cURL extension.");
+            Log::error("cURL Error: [{$curl_errno}] {$curl_error}"); 
 
+            curl_close($ch);
+            return redirect()->back(); // Fail gracefully
+        }
+
+        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        if ($http_code != 204) {
+            Log::error("Discord Webhook post failed!");
+            Log::debug("Status: {$http_code}, Response: {$response}");
+        }
+
+        curl_close($ch);
+
+        return redirect()->back();
     }
 }
