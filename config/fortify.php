@@ -1,6 +1,5 @@
 <?php
 
-use App\Providers\RouteServiceProvider;
 use Laravel\Fortify\Features;
 
 return [
@@ -52,6 +51,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Lowercase Usernames
+    |--------------------------------------------------------------------------
+    |
+    | This value defines whether usernames should be lowercased before saving
+    | them in the database, as some database system string fields are case
+    | sensitive. You may disable this for your application if necessary.
+    |
+    */
+
+    'lowercase_usernames' => true,
+
+    /*
+    |--------------------------------------------------------------------------
     | Home Path
     |--------------------------------------------------------------------------
     |
@@ -61,7 +73,22 @@ return [
     |
     */
 
-    'home' => RouteServiceProvider::HOME,
+    'home' => '/dashboard',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Fortify Routes Prefix / Subdomain
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify which prefix Fortify will assign to all the routes
+    | that it registers with the application. If necessary, you may change
+    | subdomain under which all of the Fortify routes will be available.
+    |
+    */
+
+    'prefix' => '',
+
+    'domain' => null,
 
     /*
     |--------------------------------------------------------------------------
@@ -88,7 +115,8 @@ return [
     */
 
     'limiters' => [
-        'login' => null,
+        'login' => 'login',
+        'two-factor' => 'two-factor',
     ],
 
     /*
@@ -117,13 +145,15 @@ return [
 
     'features' => [
         Features::registration(),
-        //Features::resetPasswords(),
+        Features::resetPasswords(),
         // Features::emailVerification(),
-        //Features::updateProfileInformation(),
-        //Features::updatePasswords(),
-        //Features::twoFactorAuthentication([
-        //    'confirmPassword' => true,
-        //]),
+        Features::updateProfileInformation(),
+        Features::updatePasswords(),
+        Features::twoFactorAuthentication([
+            'confirm' => true,
+            'confirmPassword' => true,
+            // 'window' => 0,
+        ]),
     ],
 
 ];

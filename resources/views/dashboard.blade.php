@@ -52,6 +52,7 @@
         </ul>
     </div>
   @endif
+  <a class="btn btn-primary btn-lg float-right" style="margin-top: 8px;" href="/user/profile" role="button">Din bruker</a>
   <h1>Hendelse:</h1>
   <form action="{{url('dashboard')}}" method="post" >
     @csrf
