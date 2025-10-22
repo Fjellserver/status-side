@@ -32,7 +32,9 @@ Dersom du ikke ønsker at hvemsom helst kan registrere seg
 //Features::registration()
 ```
 
-Discord Webhook finnes under /config/discord.php
+Discord Webhook er satt i .env med:
+DISCORD_WEBHOOK=URL
+DISCORD_WEBHOOK_DOWN_ALERT=URL
 
 # Lenker
 ```
