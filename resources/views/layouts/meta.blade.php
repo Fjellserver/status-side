@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="https://fjellserver.no/assets/css/logo.css">
 <link rel="stylesheet" href="https://fjellserver.no/assets/css/main.css">
 <link rel="stylesheet" href="https://fjellserver.no/assets/css/scroll.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="https://fjellserver.no/assets/css/cookie.css">
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MHEBZGDRYE"></script>

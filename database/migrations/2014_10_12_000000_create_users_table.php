@@ -9,10 +9,18 @@ class CreateUsersTable extends Migration
     /**
      * Run the migrations.
      *
+     * Superseded by 0001_01_01_000000_create_users_table, which runs first on
+     * fresh databases. Kept (guarded) so existing installations that already
+     * ran this migration keep a consistent migration history.
+     *
      * @return void
      */
     public function up()
     {
+        if (Schema::hasTable('users')) {
+            return;
+        }
+
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
