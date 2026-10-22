@@ -6,7 +6,7 @@
   "keywords": ["framework","laravel"],
   "license": "MIT",
   "require": {
-    "php": "^8.3",
+    "php": "^8.3.36",
     "laravel/framework": "^13.0",
     "laravel/jetstream": "^5.5",
     "laravel/sanctum": "^4.3",
@@ -25,7 +25,7 @@
     "preferred-install": "dist",
     "sort-packages": true,
     "platform": {
-      "php": "8.3.0"
+      "php": "8.3.36"
     },
     "allow-plugins": {
       "php-http/discovery": true
