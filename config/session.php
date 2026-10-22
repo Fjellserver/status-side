@@ -166,9 +166,13 @@ return [
     | to the server if the browser has a HTTPS connection. This will keep
     | the cookie from being sent to you if it can not be done securely.
     |
+    | Defaults to true whenever APP_URL is an https:// URL, so production
+    | gets Secure cookies without extra configuration. Override with
+    | SESSION_SECURE_COOKIE when needed.
+    |
     */
 
-    'secure' => env('SESSION_SECURE_COOKIE'),
+    'secure' => env('SESSION_SECURE_COOKIE', str_starts_with((string) env('APP_URL', ''), 'https://')),
 
     /*
     |--------------------------------------------------------------------------
@@ -197,5 +201,20 @@ return [
     */
 
     'same_site' => 'lax',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Serialization
+    |--------------------------------------------------------------------------
+    |
+    | JSON serialization prevents PHP object deserialization ("gadget chain")
+    | attacks against the session store if APP_KEY ever leaks. Nothing in
+    | this application stores PHP objects in the session.
+    |
+    | Supported: "json", "php"
+    |
+    */
+
+    'serialization' => 'json',
 
 ];

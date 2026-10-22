@@ -50,7 +50,7 @@
   </div>
   <div class="form-group">
     <label for="signatur">Signatur:</label>
-    <textarea type="text" class="form-control" id="signatur" name="signatur" placeholder="Skriv en signatur her" rows="3" required>{{ $infoone->signatur }}</textarea>
+    <textarea type="text" class="form-control" id="signatur" name="signatur" placeholder="Skriv en signatur her" rows="3" required>{{ $infoone?->signatur }}</textarea>
   
   </div>
   <button type="submit" class="btn btn-primary">Publiser</button>

@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\StatusController;
+use App\Http\Controllers\Updater;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -7,35 +10,25 @@ use Illuminate\Support\Facades\Route;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| The public status page is open to everyone. Everything under /dashboard
+| requires an authenticated session.
 |
 */
 
-Route::get('/', 'App\Http\Controllers\StatusController@show', function () {
-    return view('status');
-});
+Route::get('/', [StatusController::class, 'show'])->name('status');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 'App\Http\Controllers\Updater@main', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/dashboard', [Updater::class, 'main'])->name('dashboard');
+    Route::get('/dashboard/hostedit', [Updater::class, 'hostEditShow'])->name('hostedit');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('dashboard/hostedit', ['as' => 'host', 'uses' => 'App\Http\Controllers\Updater@hostEditShow'], function () {
-    return view('hostedit');
-})->name('hostedit');
+    Route::post('/dashboard', [UserController::class, 'formSubmit'])->name('info.store');
+    Route::post('/dashboard/update', [Updater::class, 'hostSubmit'])->name('host.store');
+    Route::post('/dashboard/hostedit/update', [Updater::class, 'hostEdit'])->name('host.update');
 
-Route::middleware(['auth:sanctum', 'verified'])->post('dashboard/', 'App\Http\Controllers\UserController@formSubmit', function () {
-});
-
-Route::middleware(['auth:sanctum', 'verified'])->post('dashboard/update', 'App\Http\Controllers\Updater@hostSubmit', function () {
-});
-
-Route::middleware(['auth:sanctum', 'verified'])->post('dashboard/host/{rank}', 'App\Http\Controllers\Updater@removehost', function () {
-});
-
-Route::middleware(['auth:sanctum', 'verified'])->post('dashboard/info/{hostid}', 'App\Http\Controllers\Updater@removeinfo', function () {
-});
-
-Route::middleware(['auth:sanctum', 'verified'])->post('dashboard/hostedit/update', 'App\Http\Controllers\Updater@hostEdit', function () {
+    Route::post('/dashboard/host/{host}', [Updater::class, 'removehost'])
+        ->whereNumber('host')
+        ->name('host.destroy');
+    Route::post('/dashboard/info/{info}', [Updater::class, 'removeinfo'])
+        ->whereNumber('info')
+        ->name('info.destroy');
 });

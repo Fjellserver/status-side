@@ -7,12 +7,9 @@ use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testBasicTest()
+    use RefreshDatabase;
+
+    public function test_the_status_page_renders(): void
     {
         $response = $this->get('/');
 
