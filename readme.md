@@ -1,6 +1,6 @@
 # Status-siden til fjellserver skrevet med PHP og Laravel
 
-Krever **PHP 8.3+** og kjører på **Laravel 13**.
+Krever **PHP 8.3.36 eller nyere** og kjører på **Laravel 13**.
 
 ## Cron jobb for å teste om en server er oppe eller nede
 ```bash
@@ -18,6 +18,7 @@ php artisan schedule:work
 
 ## Installer
 ```
+php -v   # må være 8.3.36 eller nyere
 composer install --optimize-autoloader --no-dev
 php artisan key:generate
 npm install
